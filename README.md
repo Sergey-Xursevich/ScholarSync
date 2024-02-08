@@ -96,3 +96,6 @@ rating: Значение оценки (от 1 до 5)
 Клонируйте репозиторий: `git clone https://github.com/your/repository.git`<br/>
 Установите зависимости: `npm install`<br/>
 Запустите проект: `npm start`
+
+## Data modeling - MongoDB
+![MongoDB Schema Design](/mongodb-schema/schema.jpg)
