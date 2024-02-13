@@ -41,7 +41,7 @@ class App {
 
     private async initializeRoutes(routes: Routes[]) {
         routes.forEach(route => {
-            this.app.use('/', route.router);
+            this.app.use('/v1/', route.router);
         });
     }
 }

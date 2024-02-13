@@ -2,8 +2,7 @@ import {Types} from "mongoose";
 
 export interface IComment {
     _id: Types.ObjectId;
-    userId: Types.ObjectId;
-    text: string;
+    text: String;
     createdAt?: Date;
     updatedAt?: Date;
 }

@@ -20,13 +20,13 @@ export class Course {
     public difficulty: Difficulty;
 
     @prop({ type: String })
-    public tags: String[];
+    public tags?: String[];
 
     @prop({ ref: () => AdditionalMaterial })
-    public additionalMaterials: Ref<AdditionalMaterial>[];
+    public additionalMaterials?: Ref<AdditionalMaterial>[];
 
     @prop({ ref: () => Comment })
-    public comments: Ref<Comment>[];
+    public comments?: Ref<Comment>[];
 
     public createdAt?: Date;
 
