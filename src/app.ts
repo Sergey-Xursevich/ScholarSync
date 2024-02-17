@@ -2,9 +2,8 @@ import express from "express";
 import cors from "cors";
 
 import {Routes} from "@interfaces/routes.interface";
-import {NODE_ENV, PORT, ORIGIN, CREDENTIALS} from "@config";
-import * as console from "console";
 import {dbConnection} from "@database";
+import {NODE_ENV, PORT, ORIGIN, CREDENTIALS} from "@config";
 
 class App {
     public app: express.Application;
