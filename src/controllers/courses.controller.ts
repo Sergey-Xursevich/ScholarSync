@@ -1,5 +1,6 @@
 import {Container} from "typedi";
 import {NextFunction, Request, Response,} from "express";
+import {StatusCodes, ReasonPhrases} from "http-status-codes";
 
 import {CoursesService} from "@services/courses.service";
 import {ICourse} from "@interfaces/courses.interface";
@@ -11,7 +12,7 @@ export class CoursesController {
         try {
             const userData: any = req.body;
             const createCourseData: ICourse = await this.courses.createCourse(userData);
-            res.status(201).json({ data: createCourseData, message: 'created' });
+            res.status(StatusCodes.CREATED).json({ data: createCourseData, message: ReasonPhrases.CREATED });
         } catch (error) {
             next(error)
         }
@@ -21,7 +22,7 @@ export class CoursesController {
         try {
             const courseId: string | undefined = req.params.id;
             const courseData: ICourse | ICourse[] = await this.courses.getCourse(courseId);
-            res.status(200).json({ data: courseData, message: 'received' });
+            res.status(StatusCodes.OK).json({ data: courseData, message: ReasonPhrases.OK });
         } catch (error) {
             next(error)
         }
@@ -31,7 +32,7 @@ export class CoursesController {
         try {
             const courseId: string = req.params.id;
             await this.courses.deleteCourse(courseId);
-            res.status(200).json({ message: 'deleted' });
+            res.status(StatusCodes.OK).json({ message: ReasonPhrases.OK });
         } catch (error) {
             next(error)
         }
@@ -42,7 +43,7 @@ export class CoursesController {
             const courseId: string = req.params.id;
             const data = req.body;
             const updatedCourseData = await this.courses.updateCourse(courseId, data);
-            res.status(200).json({ data: updatedCourseData, message: 'updated' });
+            res.status(StatusCodes.OK).json({ data: updatedCourseData, message:  ReasonPhrases.OK });
         } catch (error) {
             next(error)
         }

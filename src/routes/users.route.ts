@@ -2,6 +2,11 @@ import {Router} from "express";
 
 import {Routes} from "@interfaces/routes.interface";
 import {UserController} from "@controllers/users.controller";
+import {
+    userCreatingValidationRules,
+    userUpdatingValidationRules,
+    validate
+} from "@/middleware/validation.middleware";
 
 export class UserRoute implements Routes {
     public path = "/users";
@@ -13,9 +18,9 @@ export class UserRoute implements Routes {
     }
 
     private initializeRoutes() {
-        this.router.post(`${this.path}`, this.user.createUser);
+        this.router.post(`${this.path}`, userCreatingValidationRules(), validate, this.user.createUser);
         this.router.get(`${this.path}`, this.user.getUser);
-        this.router.put(`${this.path}/:id`, this.user.updateUser);
+        this.router.put(`${this.path}/:id`, userUpdatingValidationRules(), validate, this.user.updateUser);
         this.router.delete(`${this.path}/:id`, this.user.deleteUser);
     }
 }
