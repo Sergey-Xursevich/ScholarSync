@@ -8,8 +8,8 @@ import {Difficulty} from "@interfaces/courses.interface";
 export const userCreatingValidationRules = () => {
     return [
         body('username').isString(),
-        body('password').isLength({ min: 5 }),
-        body('role').isIn([Role.User, Role.Author, Role.Admin]),
+        body('password').isString().not().isEmpty().isLength({ min: 5, max: 32}),
+        body('role').optional().isIn([Role.User, Role.Author, Role.Admin]),
         body('availableCourses').optional().isArray()
     ]
 }
@@ -17,7 +17,7 @@ export const userCreatingValidationRules = () => {
 export const userUpdatingValidationRules = () => {
     return [
         body('username').optional().isString(),
-        body('password').optional().isLength({ min: 5 }),
+        body('password').isString().not().isEmpty().isLength({ min: 5, max: 32}),
         body('role').optional().isIn([Role.User, Role.Author, Role.Admin]),
         body('availableCourses').optional().isArray()
     ]

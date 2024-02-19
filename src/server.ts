@@ -6,7 +6,6 @@ import {UserRoute} from "@routes/users.route";
 import {RatingsRoute} from "@routes/ratings.route";
 import {CoursesRoute} from "@routes/course.route";
 
-
 validateEnv();
 
 const app = new App([

@@ -12,7 +12,7 @@ export class User {
     public password: string;
 
     @prop({ enum: Role, type: Number })
-    public role: Role;
+    public role?: Role;
 
     @prop({ ref: () => AvailableCourse })
     public availableCourses?: Ref<AvailableCourse>[]
