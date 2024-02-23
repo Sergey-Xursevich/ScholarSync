@@ -4,6 +4,7 @@ import cors from "cors";
 import {Routes} from "@interfaces/routes.interface";
 import {dbConnection} from "@database";
 import {NODE_ENV, PORT, ORIGIN, CREDENTIALS} from "@config";
+import {ErrorMiddleware} from "@/middleware/error.middleware";
 
 class App {
     public app: express.Application;
@@ -18,6 +19,7 @@ class App {
         this.connectToDatabase();
         this.initializeMiddlewares();
         this.initializeRoutes(routes);
+        this.initializeErrorHandling();
     }
 
     public listen() {
@@ -41,9 +43,13 @@ class App {
 
     private async initializeRoutes(routes: Routes[]) {
         routes.forEach(route => {
-            this.app.use('/', route.router);
+            this.app.use('/v1/', route.router);
         });
     }
-}
+
+    private initializeErrorHandling() {
+        this.app.use(ErrorMiddleware)
+    }
+ }
 
 export default App;

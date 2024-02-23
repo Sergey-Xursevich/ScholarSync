@@ -16,9 +16,9 @@ export interface ICourse {
     title: String;
     description: String;
     difficulty: Difficulty;
-    tags: String[];
-    additionalMaterials: Ref<AdditionalMaterial>[];
-    comments: Ref<Comment>[];
+    tags?: String[];
+    additionalMaterials?: Ref<AdditionalMaterial>[];
+    comments?: Ref<Comment>[];
     createdAt?: Date;
     updatedAt?: Date;
 }

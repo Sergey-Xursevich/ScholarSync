@@ -4,9 +4,6 @@ import {prop, getModelForClass, modelOptions} from '@typegoose/typegoose';
 
 @modelOptions({ schemaOptions: { collection: 'comments', timestamps: true } })
 export class Comment {
-    @prop({ required: true })
-    public userId!: Types.ObjectId;
-
     @prop({ type: String, required: true, trim: true })
     public text!: String;
 
