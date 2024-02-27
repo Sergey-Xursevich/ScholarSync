@@ -12,7 +12,7 @@ export interface IUser {
     _id: Types.ObjectId;
     username: string;
     password: string;
-    role: Role;
+    role?: Role;
     availableCourses?: Ref<AvailableCourse>[];
     createdAt?: Date;
     updatedAt?: Date;

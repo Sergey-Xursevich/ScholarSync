@@ -1,6 +1,7 @@
 import {Router} from "express";
 
 import {Routes} from "@interfaces/routes.interface";
+import {AuthMiddleware} from "@/middleware/auth.middleware";
 import {CoursesController} from "@controllers/courses.controller";
 import {
     courseCreatingValidationRules,
@@ -18,9 +19,9 @@ export class CoursesRoute implements Routes {
     }
 
     private initializeRoutes() {
-        this.router.post(`${this.path}`, courseCreatingValidationRules(), validate, this.course.createCourse);
-        this.router.get(`${this.path}/:id?`, this.course.getCourse);
-        this.router.delete(`${this.path}/:id`, this.course.deleteCourse);
-        this.router.put(`${this.path}/:id`, courseUpdatingValidationRules(), validate,  this.course.updateCourse);
+        this.router.post(`${this.path}`, AuthMiddleware, courseCreatingValidationRules(), validate, this.course.createCourse);
+        this.router.get(`${this.path}/:id?`, AuthMiddleware, this.course.getCourse);
+        this.router.delete(`${this.path}/:id`, AuthMiddleware, this.course.deleteCourse);
+        this.router.put(`${this.path}/:id`, AuthMiddleware, courseUpdatingValidationRules(), validate,  this.course.updateCourse);
     }
 }

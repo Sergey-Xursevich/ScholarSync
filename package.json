@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development PORT=8080 nodemon"
+    "dev": "cross-env NODE_ENV=development PORT=8080 SECRET_KEY=ARGO nodemon"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@typegoose/typegoose": "^12.1.0",
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.1",
@@ -31,6 +32,7 @@
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
     "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.1",
     "typedi": "^0.10.0"
   }
