@@ -8,16 +8,13 @@ on:
 
 jobs:
   build:
-    env:
-      MONGO_INITDB_ROOT_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-      MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
     services:
       mongo:
         image: mongo:7.0.6
         ports:
           - 27017:27017
         options: >-
-          --health-cmd "mongo --host localhost --port 27017 --username root --password ${{ secrets.DATABASE_PASSWORD }} --eval 'db.adminCommand({ ping: 1 })'"
+          --health-cmd "mongo --host localhost --port 27017 --username ${{ secrets.DATABASE_USERNAME }} --password ${{ secrets.DATABASE_PASSWORD }} --eval 'db.adminCommand({ ping: 1 })'"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
