@@ -2,11 +2,12 @@
   "name": "scholarsync",
   "version": "1.0.0",
   "description": "- Проектирование и конфигурация нового backend проекта на Node.js\r - Описание тестов для WEB API",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build && node public/index.js",
     "dev": "cross-env NODE_ENV=development PORT=8080 SECRET_KEY=ARGO nodemon",
-    "build": "rimraf ./build && tsc --project tsconfig.json && tsc-alias -p tsconfig.json"
+    "build": "rimraf ./public && tsc --project tsconfig.json && tsc-alias -p tsconfig.json"
   },
   "keywords": [],
   "author": "",

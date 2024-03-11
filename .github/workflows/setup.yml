@@ -26,9 +26,3 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t scholar-sync .
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-args: '--prod'
