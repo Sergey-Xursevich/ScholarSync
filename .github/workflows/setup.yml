@@ -7,10 +7,7 @@ on:
       - '*'
 
 env:
-  DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-  DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-  DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 jobs:
   build:
@@ -32,3 +29,15 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t scholar-sync .
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+
+      - name: Build Project Artifacts
+        run: vercel build --token=$VERCEL_TOKEN
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=$VERCEL_TOKEN
