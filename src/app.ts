@@ -4,7 +4,7 @@ import cors from "cors";
 import {Routes} from "@interfaces/routes.interface";
 import {dbConnection} from "@database";
 import {NODE_ENV, PORT, ORIGIN, CREDENTIALS} from "@config";
-import {ErrorMiddleware} from "@/middleware/error.middleware";
+import {ErrorMiddleware} from "@middleware/error.middleware";
 
 class App {
     public app: express.Application;

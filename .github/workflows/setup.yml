@@ -1,0 +1,52 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [*]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      MONGO_INITDB_ROOT_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+      MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+    services:
+      mongo:
+        image: mongo:7.0.6
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongo --host localhost --port 27017 --username root --password example --eval 'db.adminCommand({ ping: 1 })'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Build Docker image
+        run: docker build -t scholar-sync .
+
+      - name: Push Docker image to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        run: docker push scholar-sync

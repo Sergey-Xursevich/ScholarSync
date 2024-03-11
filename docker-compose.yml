@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=${DATABASE_USERNAME}
+      - DB_PASSWORD=${DATABASE_PASSWORD}
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:7.0.6
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DATABASE_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - boilerplate-mongo-db:/data/db
+volumes:
+  boilerplate-mongo-db:

@@ -1,13 +1,13 @@
 import {Router} from "express";
 
 import {Routes} from "@interfaces/routes.interface";
-import {AuthMiddleware} from "@/middleware/auth.middleware";
+import {AuthMiddleware} from "@middleware/auth.middleware";
 import {UserController} from "@controllers/users.controller";
 import {
     userCreatingValidationRules,
     userUpdatingValidationRules,
     validate
-} from "@/middleware/validation.middleware";
+} from "@middleware/validation.middleware";
 
 export class UserRoute implements Routes {
     public path = "/users";

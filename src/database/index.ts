@@ -1,5 +1,5 @@
 import { connect, set } from 'mongoose';
-import { NODE_ENV, DB_HOST, DB_PASSWORD } from '@/config';
+import { NODE_ENV, DB_HOST, DB_PASSWORD } from '@config';
 import * as console from "console";
 
 export const dbConnection = async () => {

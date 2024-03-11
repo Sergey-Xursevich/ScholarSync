@@ -1,13 +1,13 @@
 import {Router} from "express";
 
 import {Routes} from "@interfaces/routes.interface";
-import {AuthMiddleware} from "@/middleware/auth.middleware";
+import {AuthMiddleware} from "@middleware/auth.middleware";
 import {CoursesController} from "@controllers/courses.controller";
 import {
     courseCreatingValidationRules,
     courseUpdatingValidationRules,
     validate
-} from "@/middleware/validation.middleware";
+} from "@middleware/validation.middleware";
 
 export class CoursesRoute implements Routes {
     public path = '/courses'

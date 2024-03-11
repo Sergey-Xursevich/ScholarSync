@@ -2,8 +2,8 @@ import {Router} from "express";
 
 import { Routes } from "@interfaces/routes.interface";
 import {AuthController} from "@controllers/auth.controller";
-import {AuthMiddleware} from "@/middleware/auth.middleware";
-import {userCreatingValidationRules, validate} from "@/middleware/validation.middleware";
+import {AuthMiddleware} from "@middleware/auth.middleware";
+import {userCreatingValidationRules, validate} from "@middleware/validation.middleware";
 
 export class AuthRoute implements Routes {
     public router = Router();
