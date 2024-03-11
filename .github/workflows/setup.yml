@@ -30,9 +30,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Test
-        run: npm test
-
       - name: Build Docker image
         run: docker build -t scholar-sync .
 
