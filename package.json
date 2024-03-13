@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "rimraf ./dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
-    "start": "cross-env NODE_ENV=development PORT=8080 SECRET_KEY=ARGO node dist/server.js"
+    "start": "cross-env NODE_ENV=development PORT=8080 SECRET_KEY=ARGO node src/server.ts"
   },
   "keywords": [],
   "author": "",
