@@ -10,3 +10,4 @@ dist
 # dotenv environment variable files
 .env
 .env.development.local
+.vercel

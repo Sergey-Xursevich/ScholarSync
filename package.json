@@ -8,8 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node public/index.js",
     "dev": "cross-env NODE_ENV=development PORT=8080 SECRET_KEY=ARGO nodemon",
-    "vercel-build": "echo Done running vercel-build.",
-    "build": "rimraf ./public && tsc --project tsconfig.json && tsc-alias -p tsconfig.json"
+    "vercel-build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json"
   },
   "keywords": [],
   "author": "",
